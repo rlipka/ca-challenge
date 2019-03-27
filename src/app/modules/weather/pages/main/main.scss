@@ -1,0 +1,69 @@
+@import "src/scss/variables";
+
+header {
+	top: 0;
+	width: 100%;
+	position: sticky;
+	text-align: center;
+	height: $navbar-height;
+	background-color: $white;
+	box-shadow: 0 1px 3px rgba($color: $gray-darker, $alpha: .1);
+
+	nav {
+		padding-top: 15px;
+	}
+}
+
+.forecast {
+	$padding: 10px;
+	width: 100%;
+	overflow: auto;
+	margin: 0 auto;
+	height: calc(100vh - #{$navbar-height} - (#{$padding} * 2));
+	padding-top: $padding;
+	padding-bottom: $padding;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	@media only screen and (min-width: $container-desktop) {
+		width: $container-desktop;
+		overflow: hidden;
+	}
+}
+
+.column {
+	width: 100%;
+	flex: 0 0 100%;
+	display: inline-block;
+	vertical-align: middle;
+
+	@media only screen and (min-width: $container-mobile) {
+		width: 250px;
+		flex: 0 0 250px;
+	}
+
+	@media only screen and (min-width: $container-desktop) {
+		width: 320px;
+		flex: 0 0 320px;
+	}
+
+}
+
+@mixin order-list($list) {
+	@each $item in $list {
+
+		.order-#{$item} {
+			order: #{$item};
+		}
+
+		@media only screen and (min-width: $container-mobile) {
+			.order-desktop-#{$item} {
+				order: #{$item};
+			}
+		}
+	}
+}
+
+@include order-list("1""2""3");

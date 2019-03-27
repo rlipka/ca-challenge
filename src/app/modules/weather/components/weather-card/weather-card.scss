@@ -1,0 +1,143 @@
+@import "src/scss/variables";
+
+$card-padding: 10px;
+$card-bg: $white;
+$card-divider: $light;
+$card-border-radius: .25rem;
+$card-footer-bg: rgba($color: $lighter, $alpha: .5);
+$card-shadow: 0 1px 6px rgba($color: $gray-darker, $alpha: .1);
+
+.card-wrapper {
+	padding: 20px 30px;
+
+	.card {
+		width: 100%;
+		padding: 0;
+		margin: auto;
+		text-align: center;
+		display: inline-block;
+
+		height: 230px;
+		color: $gray-dark;
+		box-shadow: $card-shadow;
+		border-radius: $card-border-radius;
+		background-color: $card-bg;
+
+		&.expanded {
+			height: 286px;
+		}
+
+		.title {
+			font-size: 18px;
+			padding: $card-padding;
+		}
+
+		.main-value {
+
+			$font-size: 90px;
+			padding: $card-padding;
+			margin: $card-padding 0;
+
+			position: relative;
+			font-size: $font-size;
+			min-height: calc(#{$font-size} + (#{$card-padding} * 2));
+
+			.unit {
+				font-size: 45px;
+				position: absolute;
+				top: 20px;
+			}
+		}
+
+		.footer {
+			color: $gray;
+			padding: $card-padding * 1.25;
+			background-color: $card-footer-bg;
+
+			.others {
+				width: 50%;
+				overflow: hidden;
+				display: inline-block;
+
+				label {
+					font-size: 12px;
+					font-weight: lighter;
+					text-transform: uppercase;
+				}
+
+				p {
+					color: $gray-dark;
+					margin: 6px 0 10px 0;
+
+					.value {
+						font-size: 18px;
+						font-weight: 500;
+					}
+
+					.unit {
+						font-size: 13px;
+					}
+				}
+			}
+
+			.updated {
+				font-size: 11px;
+				font-weight: lighter;
+				letter-spacing: -0.25px;
+			}
+		}
+
+		.divider {
+			height: 0;
+			margin: 0;
+			overflow: hidden;
+			border-top: 1px solid $card-divider;
+		}
+	}
+
+	.orange {
+		color: $orange;
+	}
+
+	.red {
+		color: $red;
+	}
+
+	.blue {
+		color: $blue;
+	}
+
+}
+
+.loading {
+	position: relative;
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 10;
+		background-color: white;
+		border-radius: $card-border-radius;
+	}
+
+	&::after {
+		content: "";
+
+		position: absolute;
+		left: 50%;
+		top: 50%;
+
+		width: 50px;
+		height: 50px;
+		transform: translate3d(-50%, -50%, 0);
+		z-index: 20;
+
+		background-image: url('../../../../../assets/loader.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}

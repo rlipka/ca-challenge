@@ -1,0 +1,18 @@
+<header>
+	<nav>
+		<img src="assets/logo.svg" width="150">
+	</nav>
+</header>
+
+<section class="forecast">
+	<div class="column order-2 order-desktop-1">
+		<app-weather-card [locationId]="3421319"></app-weather-card>
+	</div>
+	<div class="column order-1 order-desktop-2">
+		<app-weather-card [locationId]="3445709" [expanded]="true"></app-weather-card>
+	</div>
+	<div class="column order-3 order-desktop-3">
+		<app-weather-card [locationId]="184745"></app-weather-card>
+	</div>
+</section>
+

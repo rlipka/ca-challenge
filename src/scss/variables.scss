@@ -1,10 +1,21 @@
-@import "./theme.scss";
+// Theme colors
+
+$white: 		#ffffff;
+$lighter: 		#f1f1f1;
+$light: 		#ebebeb;
+$gray: 			#b4b4b4;
+$gray-dark: 	#737c84;
+$gray-darker: 	#333333;
+$black:			#000000;
+
+$red: 			#ed1946;
+$blue: 			#69a3ff;
+$orange: 		#ff9632;
+
+// App variables
 
 $app-bg: $lighter;
+$navbar-height: 50px;
 
-$card-bg: $white;
-$card-footer-bg: rgba($color: $lighter, $alpha: .5);
-
-$card-divider: $light;
-$card-border-radius: .25rem;
-$card-shadow: 0 1px 6px rgba($color: $gray-darker, $alpha: .1);
+$container-mobile: 640px;
+$container-desktop: 1024px;

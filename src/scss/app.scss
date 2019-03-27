@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+body {
+	margin: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+	background-color: $app-bg;
+	font-family: Helvetica, Arial, sans-serif;
+}

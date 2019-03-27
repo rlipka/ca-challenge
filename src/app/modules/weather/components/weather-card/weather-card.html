@@ -1,0 +1,40 @@
+<div class="card-wrapper">
+	<div class="card" [class.expanded]="expanded" [class.loading]="isLoading">
+		<ng-container *ngIf="!hasError">
+			<div class="title">
+				<span>{{ forecast.name + ', ' + forecast.sys.country }}</span>
+			</div>
+			<div class="divider"></div>
+			<div class="main-value orange" [class.blue]="forecast.main.temp &lt;= 5" [class.red]="forecast.main.temp &gt; 25">
+				<span>{{ forecast.main.temp | number:'1.0-0' }}</span>
+				<span class="unit">°</span>
+			</div>
+			<div class="footer">
+				<div class="others" *ngIf="expanded">
+					<label>Humidity</label>
+					<p>
+						<span class="value">{{ forecast.main.humidity }}</span>
+						<span class="unit">{{ '%' }}</span>
+					</p>
+				</div>
+				<div class="others" *ngIf="expanded">
+					<label>Pressure</label>
+					<p>
+						<span class="value">{{ forecast.main.pressure }}</span>
+						<span class="unit">{{ 'hPa' }}</span>
+					</p>
+				</div>
+				<div class="updated">
+					<span>Updated at </span>
+					<span>{{ forecast.dt | date: 'mediumTime' }}</span>
+				</div>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="hasError">
+			<p>Something went wrong</p>
+			<button (click)="search()">Try Again</button>
+		</ng-container>
+	</div>
+	<button (click)="search()">reload</button>
+
+</div>
