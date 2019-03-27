@@ -1,39 +1,40 @@
-<div class="card-wrapper">
-	<div class="card" [class.expanded]="expanded" [class.loading]="isLoading">
-		<ng-container *ngIf="!hasError">
-			<div class="title">
-				<span>{{ forecast.name + ', ' + forecast.sys.country }}</span>
-			</div>
-			<div class="divider"></div>
-			<div class="main-value orange" [class.blue]="forecast.main.temp &lt;= 5" [class.red]="forecast.main.temp &gt; 25">
-				<span>{{ forecast.main.temp | number:'1.0-0' }}</span>
-				<span class="unit">°</span>
-			</div>
+<div class="card">
+	<div class="header">
+		<span>{{ title || weather.name + ', ' + weather.sys.country }}</span>
+	</div>
+	<div class="body" [class.expanded]="expanded" [class.loading]="loading">
+
+		<ng-container *ngIf="!error">
+			<span class="text-orange" [class.text-blue]="weather.main.temp &lt;= 5" [class.text-red]="weather.main.temp &gt; 25">
+				<span class="temp">{{ weather.main.temp | number:'1.0-0' }}</span>
+				<span class="unit">{{ '°' }}</span>
+			</span>
 			<div class="footer">
-				<div class="others" *ngIf="expanded">
+				<div class="half" *ngIf="expanded">
 					<label>Humidity</label>
-					<p>
-						<span class="value">{{ forecast.main.humidity }}</span>
-						<span class="unit">{{ '%' }}</span>
-					</p>
+					<span class="value">{{ weather.main.humidity }}</span>
+					<span class="unit">{{ '%' }}</span>
 				</div>
-				<div class="others" *ngIf="expanded">
+				<div class="half" *ngIf="expanded">
 					<label>Pressure</label>
-					<p>
-						<span class="value">{{ forecast.main.pressure }}</span>
-						<span class="unit">{{ 'hPa' }}</span>
-					</p>
+					<span class="value">{{ weather.main.pressure }}</span>
+					<span class="unit">{{ 'hPa' }}</span>
 				</div>
 				<div class="updated">
 					<span>Updated at </span>
-					<span>{{ forecast.dt | date: 'mediumTime' }}</span>
+					<span>{{ weather.dt | date: 'mediumTime' }}</span>
 				</div>
 			</div>
 		</ng-container>
-		<ng-container *ngIf="hasError">
-			<p>Something went wrong</p>
-			<button (click)="search()">Try Again</button>
+
+		<ng-container *ngIf="error">
+			<div class="error">
+				<div>Something went wrong</div>
+				<button (click)="search()">Try Again</button>
+			</div>
 		</ng-container>
 	</div>
-	<!-- <button (click)="search()">reload</button> -->
 </div>
+
+<button (click)="search()">refresh</button>
+<button (click)="error=!error">error</button>

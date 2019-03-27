@@ -1,143 +1,135 @@
 @import "src/scss/variables";
 
+$card-body: 180px;
+$card-footer: 50px;
+$card-body-expanded: 230px;
+
 $card-padding: 10px;
-$card-bg: $white;
 $card-divider: $light;
-$card-border-radius: .25rem;
-$card-footer-bg: rgba($color: $lighter, $alpha: .5);
-$card-shadow: 0 1px 6px rgba($color: $gray-darker, $alpha: .1);
 
-.card-wrapper {
-	padding: 20px 30px;
+.card {
+	display: flex;
+	flex-wrap: no-wrap;
+	text-align: center;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: $border-radius;
+	box-shadow: 0 1px 6px rgba($color: $gray-darker, $alpha: .1);
 
-	.card {
+	div {
 		width: 100%;
-		padding: 0;
-		margin: auto;
-		text-align: center;
-		display: inline-block;
+		position: relative;
+		background-color: $white;
 
-		height: 230px;
-		color: $gray-dark;
-		box-shadow: $card-shadow;
-		border-radius: $card-border-radius;
-		background-color: $card-bg;
-
-		&.expanded {
-			height: 286px;
-		}
-
-		.title {
+		&.header {
 			font-size: 18px;
+			color: $gray-dark;
 			padding: $card-padding;
+			border-top-left-radius: $border-radius;
+			border-top-right-radius: $border-radius;
+			border-bottom: 1px solid $card-divider;
 		}
 
-		.main-value {
+		&.body {
+			height: $card-body;
+			padding: $card-padding * 2;
+			border-bottom-left-radius: $border-radius;
+			border-bottom-right-radius: $border-radius;
 
-			$font-size: 90px;
-			padding: $card-padding;
-			margin: $card-padding 0;
+			&.expanded {
+				height: $card-body-expanded;
+			}
 
-			position: relative;
-			font-size: $font-size;
-			min-height: calc(#{$font-size} + (#{$card-padding} * 2));
+			span {
+				&.temp {
+					font-size: 90px;
+				}
 
-			.unit {
-				font-size: 45px;
+				&.unit {
+					font-size: 60px;
+					vertical-align: text-bottom;
+				}
+			}
+
+			.footer {
 				position: absolute;
-				top: 20px;
-			}
-		}
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: $card-padding;
+				border-bottom-left-radius: inherit;
+				border-bottom-right-radius: inherit;
+				background-color: rgba($color: $lighter, $alpha: .5);
 
-		.footer {
-			color: $gray;
-			padding: $card-padding * 1.25;
-			background-color: $card-footer-bg;
+				.half {
+					width: 50%;
+					overflow: hidden;
+					display: inline-block;
+					background-color: transparent;
 
-			.others {
-				width: 50%;
-				overflow: hidden;
-				display: inline-block;
+					label {
+						color: $gray;
+						display: block;
+						font-size: 12px;
+						font-weight: lighter;
+						text-transform: uppercase;
+						margin: 5px 0;
+					}
 
-				label {
-					font-size: 12px;
+					span {
+						color: $gray-dark;
+						margin: 0 0 5px 0;
+						display: inline-block;
+						vertical-align: baseline;
+
+						&.value {
+							font-size: 18px;
+							font-weight: 500;
+						}
+
+						&.unit {
+							font-size: 13px;
+						}
+					}
+				}
+
+				.updated {
+					color: $gray;
+					font-size: 10px;
 					font-weight: lighter;
-					text-transform: uppercase;
+					letter-spacing: -0.25px;
+					background-color: transparent;
+				}
+			}
+
+			.error {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+
+				div {
+					color: $red;
+					font-size: 16px;
+					font-weight: 600;
+					margin-bottom: 20px;
 				}
 
-				p {
+				button {
+
 					color: $gray-dark;
-					margin: 6px 0 10px 0;
+					font-size: 15px;
+					border-radius: 20px;
+					border: 2px solid $gray-dark;
 
-					.value {
-						font-size: 18px;
-						font-weight: 500;
-					}
+					outline: none;
+					text-align: center;
+					display: inline-block;
 
-					.unit {
-						font-size: 13px;
-					}
+					padding: 8px 12px;
+					background-color: transparent;
 				}
 			}
-
-			.updated {
-				font-size: 11px;
-				font-weight: lighter;
-				letter-spacing: -0.25px;
-			}
 		}
-
-		.divider {
-			height: 0;
-			margin: 0;
-			overflow: hidden;
-			border-top: 1px solid $card-divider;
-		}
-	}
-
-	.orange {
-		color: $orange;
-	}
-
-	.red {
-		color: $red;
-	}
-
-	.blue {
-		color: $blue;
-	}
-
-}
-
-.loading {
-	position: relative;
-
-	&::before {
-		content: "";
-		position: absolute;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 10;
-		background-color: white;
-		border-radius: $card-border-radius;
-	}
-
-	&::after {
-		content: "";
-
-		position: absolute;
-		left: 50%;
-		top: 50%;
-
-		width: 50px;
-		height: 50px;
-		transform: translate3d(-50%, -50%, 0);
-		z-index: 20;
-
-		background-image: url('../../../../../assets/loader.svg');
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 }

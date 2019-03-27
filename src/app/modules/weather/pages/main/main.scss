@@ -1,27 +1,15 @@
 @import "src/scss/variables";
 
-header {
-	top: 0;
-	width: 100%;
-	position: sticky;
-	text-align: center;
-	height: $navbar-height;
-	background-color: $white;
-	box-shadow: 0 1px 3px rgba($color: $gray-darker, $alpha: .1);
+$column-mobile: 100%;
+$column-tablet: 200px;
+$column-desktop: 320px;
 
-	nav {
-		padding-top: 15px;
-	}
-}
+.card-container {
 
-.forecast {
-	$padding: 10px;
 	width: 100%;
-	overflow: auto;
+	height: 100vh;
 	margin: 0 auto;
-	height: calc(100vh - #{$navbar-height} - (#{$padding} * 2));
-	padding-top: $padding;
-	padding-bottom: $padding;
+
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -31,33 +19,40 @@ header {
 		width: $container-desktop;
 		overflow: hidden;
 	}
-}
 
-.column {
-	width: 100%;
-	flex: 0 0 100%;
-	display: inline-block;
-	vertical-align: middle;
+	div {
+		$padding: 30px;
+		padding: 0 $padding $padding $padding;
 
-	@media only screen and (min-width: $container-mobile) {
-		width: 250px;
-		flex: 0 0 250px;
+		display: inline-block;
+		vertical-align: middle;
+
+		@media only screen and (max-width: $container-mobile) {
+			&:first-of-type {
+				padding-top: $padding;
+			}
+		}
+
+		width: $column-mobile;
+		flex: 0 0 $column-mobile;
+
+		@media only screen and (min-width: $container-mobile) {
+			padding: 0 $padding / 2 $padding / 2 $padding / 2;
+			width: $column-tablet;
+			flex: 0 0 $column-tablet;
+		}
+
+		@media only screen and (min-width: $container-desktop) {
+			padding: 0 $padding $padding $padding;
+			width: $column-desktop;
+			flex: 0 0 $column-desktop;
+		}
+
 	}
-
-	@media only screen and (min-width: $container-desktop) {
-		width: 320px;
-		flex: 0 0 320px;
-	}
-
 }
 
 @mixin order-list($list) {
 	@each $item in $list {
-
-		.order-#{$item} {
-			order: #{$item};
-		}
-
 		@media only screen and (min-width: $container-mobile) {
 			.order-desktop-#{$item} {
 				order: #{$item};

@@ -14,10 +14,13 @@ export class WeatherCardComponent implements OnInit {
 	@Input()
 	expanded: boolean;
 
-	hasError = false;
-	isLoading = true;
+	@Input()
+	title: string;
 
-	forecast: any = {
+	error = false;
+	loading = true;
+
+	weather: any = {
 		dt: new Date(),
 		name: '',
 		main: {
@@ -37,17 +40,17 @@ export class WeatherCardComponent implements OnInit {
 	}
 
 	search() {
-		this.isLoading = true;
+		this.loading = true;
 
 		this.weatherService.today(this.locationId).subscribe(response => {
-			this.hasError = !response || !response.id;
+			this.error = !response || !response.id;
 
-			if (!this.hasError) {
-				this.forecast = response;
-				this.forecast.dt = new Date();
+			if (!this.error) {
+				this.weather = response;
+				this.weather.dt = new Date();
 			}
 
-			this.isLoading = false;
+			this.loading = false;
 		});
 	}
 }
