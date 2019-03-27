@@ -1,0 +1,73 @@
+@import "../../../scss/variables.scss";
+
+.card {
+	$padding: 10px;
+
+	width: 100%;
+	padding: 0;
+	margin: auto;
+	text-align: center;
+
+	color: $gray-dark;
+	box-shadow: $card-shadow;
+	border-radius: $card-border-radius;
+	background-color: $card-bg;
+
+	.title {
+		font-size: 18px;
+		padding: $padding;
+	}
+
+	.main-value {
+		$font-size: 85px;
+		padding: $padding;
+		margin: $padding 0;
+		font-size: $font-size;
+		min-height: calc(#{$font-size} + (#{$padding} * 2));
+	}
+
+	.footer {
+		color: $gray;
+		padding: calc(#{$padding} * 1.5);
+		background-color: $card-footer-bg;
+
+		.others {
+			width: 50%;
+			overflow: hidden;
+			display: inline-block;
+
+			label {
+				font-size: 12px;
+				font-weight: lighter;
+				text-transform: uppercase;
+			}
+
+			p {
+				color: $gray-dark;
+				margin: 6px 0 10px 0;
+
+				.value {
+					font-size: 18px;
+					font-weight: 500;
+				}
+
+				.unit {
+					font-size: 12px;
+				}
+			}
+		}
+
+		.updated {
+			font-size: 11px;
+			font-weight: lighter;
+			letter-spacing: -0.25px;
+		}
+	}
+
+	.divider {
+		height: 0;
+		margin: 0;
+		overflow: hidden;
+		border-top: 1px solid $card-divider;
+	}
+}
