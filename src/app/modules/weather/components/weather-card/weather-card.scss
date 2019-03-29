@@ -61,7 +61,8 @@ $card-divider: $light;
 				border-bottom-right-radius: inherit;
 				background-color: rgba($color: $lighter, $alpha: .5);
 
-				.half {
+				.humidity,
+				.pressure {
 					width: 50%;
 					overflow: hidden;
 					display: inline-block;

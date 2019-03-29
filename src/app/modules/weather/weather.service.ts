@@ -4,23 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Weather } from './model/weather';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class WeatherService extends BaseService {
 
-	count = 0;
-
 	constructor(private readonly http: HttpClient) {
 		super();
 	}
 
-	today(id: string): Observable<any> {
-		this.count += 1;
-		console.log(this.count);
-
-		return this.http.get<any>(`http://api.openweathermap.org/data/2.5/weather?id=${id}&APPID=${environment.weatherApiKey}&units=metric`)
+	today(id: string): Observable<Weather> {
+		return this.http.get<Weather>(`http://api.openweathermap.org/data/2.5/weather?id=${id}&APPID=${environment.weatherApiKey}&units=metric`)
 			.pipe(catchError(this.handleError<any>('WeatherService > today')));
 	}
 }
