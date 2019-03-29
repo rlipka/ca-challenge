@@ -4,7 +4,6 @@ export class Weather {
 	name: string = null;
 
 	dt = 0;
-	date: Date = null;
 
 	sys: {
 		country?: string,
@@ -21,10 +20,6 @@ export class Weather {
 			humidity: 0,
 			pressure: 0,
 		};
-
-	get fullName() {
-		return this.name && this.sys && this.sys.country ? `${this.name}, ${this.sys.country}` : null;
-	}
 
 	constructor() { }
 

@@ -11,12 +11,14 @@ import { Weather } from './model/weather';
 })
 export class WeatherService extends BaseService {
 
+	baseUrl = 'weather';
+
 	constructor(private readonly http: HttpClient) {
 		super();
 	}
 
 	today(id: string): Observable<Weather> {
-		return this.http.get<Weather>(`http://api.openweathermap.org/data/2.5/weather?id=${id}&APPID=${environment.weatherApiKey}&units=metric`)
+		return this.http.get<Weather>(`${environment.weatherApi}/${this.baseUrl}?id=${id}&APPID=${environment.weatherApiKey}&units=metric`)
 			.pipe(catchError(this.handleError<any>('WeatherService > today')));
 	}
 }

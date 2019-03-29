@@ -1,7 +1,5 @@
 <div class="card">
-	<div class="header">
-		{{ weather.fullName }}
-	</div>
+	<div class="header">{{ getFullName() }}	</div>
 	<div class="body" [class.expanded]="expanded" [class.loading]="loading">
 		<ng-container *ngIf="!error">
 			<div class="temperature" [class.text-orange]="weather.main.temp &gt; 5 && weather.main.temp &lt;= 25" [class.text-blue]="weather.main.temp &lt;= 5"
@@ -22,7 +20,7 @@
 				</div>
 				<div class="updated">
 					<span>Updated at </span>
-					<span>{{ weather.date | date: 'mediumTime' }}</span>
+					<span>{{ getDate() | date: 'mediumTime' }}</span>
 				</div>
 			</div>
 		</ng-container>
@@ -30,11 +28,11 @@
 		<ng-container *ngIf="error">
 			<div class="error">
 				<div>Something went wrong</div>
-				<button (click)="loadWeatherFromCache()">Try Again</button>
+				<button (click)="refresh()">Try Again</button>
 			</div>
 		</ng-container>
 	</div>
 </div>
 
-<button (click)="loadWeatherFromCache()">refresh</button>
+<button (click)="refresh()">refresh</button>
 <button (click)="error=!error">error</button>

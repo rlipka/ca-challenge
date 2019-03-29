@@ -11,14 +11,13 @@ const TEXT = 'TESTE';
 const NUMBER_1 = 5;
 const NUMBER_2 = 25;
 const NUMBER_3 = 35;
-const DATE = new Date(2010, 1, 1);
+const DATE = 126498960;
 
 function createModel(text: string, number: number) {
 	const model = new Weather();
 	model.id = text;
 	model.name = text;
-	model.dt = number;
-	model.date = DATE;
+	model.dt = DATE;
 	model.sys.country = text;
 	model.main.temp = number;
 	model.main.pressure = number;
