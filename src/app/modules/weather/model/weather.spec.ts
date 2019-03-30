@@ -12,7 +12,6 @@ describe('Class: Weather', () => {
 		model.id = TEXT;
 		model.name = TEXT;
 		model.dt = NUMBER;
-		model.date = DATE;
 		model.sys.country = TEXT;
 		model.main.temp = NUMBER;
 		model.main.pressure = NUMBER;
@@ -29,15 +28,10 @@ describe('Class: Weather', () => {
 		expect(model.id).toBe(TEXT);
 		expect(model.dt).toBe(NUMBER);
 		expect(model.name).toBe(TEXT);
-		expect(model.date).toBe(DATE);
 		expect(model.main.temp).toBe(NUMBER);
 		expect(model.main.pressure).toBe(NUMBER);
 		expect(model.main.humidity).toBe(NUMBER);
 		expect(model.sys.country).toBe(TEXT);
-	});
-
-	it('test full name', () => {
-		expect(model.fullName).toBe(`${TEXT}, ${TEXT}`);
 	});
 
 	afterEach(() => {

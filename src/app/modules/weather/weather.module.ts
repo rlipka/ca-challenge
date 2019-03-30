@@ -2,6 +2,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 import { WeatherMainComponent } from './pages/main/main';
 import { CacheInterceptor } from 'src/app/shared/interceptors/cache.interceptor';
+import { NavbarComponent } from 'src/app/shared/components/navbar/navbar.component';
 import { WeatherService } from './weather.service';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,7 @@ import { NgModule } from '@angular/core';
 	declarations: [
 		WeatherMainComponent,
 		WeatherCardComponent,
+		NavbarComponent,
 	],
 	imports: [
 		FormsModule,

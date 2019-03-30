@@ -7,7 +7,7 @@ $column-desktop: 320px;
 .card-container {
 
 	width: 100%;
-	height: 100vh;
+	height: calc(100vh - #{$navbar-height});
 	margin: 0 auto;
 
 	display: flex;

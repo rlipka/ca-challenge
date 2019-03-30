@@ -1,11 +1,8 @@
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/**
- * The cache max age time in miliseconds. Default is 10 minutes
- */
-// const CACHE_MAX_AGE = 1000 * 60 * 10;
-const CACHE_MAX_AGE = 5000;
+/** The cache max age time in miliseconds. Default is 10 minutes */
+const CACHE_MAX_AGE = 1000 * 60 * 10;
 
 @Injectable()
 export class CacheService {

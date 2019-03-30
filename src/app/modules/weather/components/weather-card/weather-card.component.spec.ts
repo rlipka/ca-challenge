@@ -52,7 +52,6 @@ describe('Component: WeatherCard', () => {
 			expect(component.weather.id).toBe(TEXT, `Weather 'id' is invalid`);
 			expect(component.weather.dt).toBe(NUMBER_1, `Weather 'dt' is invalid`);
 			expect(component.weather.name).toBe(TEXT, `Weather 'name' is invalid`);
-			expect(component.weather.date).toBeDefined(`Weather 'date' is invalid`);
 			expect(component.weather.sys).toBeDefined(`Weather 'main' cant be null`);
 			expect(component.weather.sys.country).toBe(TEXT, `Weather 'country' is invalid`);
 			expect(component.weather.main).toBeDefined(`Weather 'main' cant be null`);
@@ -67,7 +66,7 @@ describe('Component: WeatherCard', () => {
 		fixture.whenStable().then(() => {
 			fixture.detectChanges();
 			expect(fixture.debugElement.query(By.css('.header'))).toBeTruthy('Card header not found');
-			expect(fixture.debugElement.query(By.css('.header')).nativeElement.innerText).toBe(component.weather.fullName, 'Invalid card header title');
+			expect(fixture.debugElement.query(By.css('.header')).nativeElement.innerText).toBe(component.getFullName(), 'Invalid card header title');
 		});
 	});
 
@@ -120,7 +119,7 @@ describe('Component: WeatherCard', () => {
 		fixture.whenStable().then(() => {
 			fixture.detectChanges();
 			expect(fixture.debugElement.query(By.css('.footer .updated'))).toBeTruthy('Card footer date not found');
-			expect(fixture.debugElement.query(By.css('.footer .updated')).nativeElement.innerText).toContain(datePipe.transform(component.weather.date, 'mediumTime'), 'Invalid card footer date');
+			expect(fixture.debugElement.query(By.css('.footer .updated')).nativeElement.innerText).toContain(datePipe.transform(component.getDate(), 'mediumTime'), 'Invalid card footer date');
 		});
 	});
 });

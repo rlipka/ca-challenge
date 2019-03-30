@@ -3,6 +3,9 @@ import { WeatherService } from '../../weather.service';
 import { Weather } from '../../model/weather';
 import { Subscription, timer } from 'rxjs';
 
+/** Card refresh time. Default is 1 minute */
+const REFRESH_TIME = 1000 * 60;
+
 @Component({
 	selector: 'app-weather-card',
 	styleUrls: ['./weather-card.scss'],
@@ -32,11 +35,10 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 	}
 
 	private subscribe(): void {
-		this.refresh$ = timer(10000).subscribe(() => this.refresh());
+		this.refresh$ = timer(REFRESH_TIME).subscribe(() => this.refresh());
 	}
 
 	refresh() {
-		console.log('refresh');
 		this.getWeather().then((response) => {
 			this.weather = response;
 			this.subscribe();
@@ -45,11 +47,11 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 
 
 	getFullName() {
-		return this.weather.name && this.weather.sys && this.weather.sys.country ? `${this.weather.name}, ${this.weather.sys.country}` : null;
+		return this.title || (this.weather && this.weather.name && this.weather.sys && this.weather.sys.country ? `${this.weather.name}, ${this.weather.sys.country}` : null);
 	}
 
 	getDate(): Date {
-		return this.weather.dt ? new Date(this.weather.dt * 1000) : null;
+		return this.weather && this.weather.dt ? new Date(this.weather.dt * 1000) : null;
 	}
 
 	getWeather(): Promise<Weather> {
