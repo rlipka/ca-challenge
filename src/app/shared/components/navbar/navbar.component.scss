@@ -1,0 +1,21 @@
+@import '../../../../scss/variables.scss';
+
+nav {
+    height: $navbar-height;
+	background-color: $white;
+
+	top: 0;
+    position: sticky;
+
+	z-index: 1;
+
+    div {
+        height: 100%;
+        display: flex;
+
+        img {
+            margin: 0 auto;
+            width: 150px;
+        }
+    }
+}
